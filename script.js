@@ -128,6 +128,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Copy Button
     copyBtn.addEventListener('click', copyToClipboard);
 
-    // Initial Generation
+    // Initial Generation 
     generatePassword();
 });
