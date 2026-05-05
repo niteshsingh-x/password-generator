@@ -4,79 +4,91 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Secure PassGen | Random Password Generator</title>
+    <link rel="stylesheet" href="style.css">
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="container">
         <header>
             <h1><i class="fas fa-shield-alt"></i> Secure PassGen</h1>
-            <p>Generate cryptographically strong random passwords</p>
+            <p>Generate cryptographically strong, readable passwords instantly.</p>
         </header>
 
-        <!-- Password Display Area -->
-        <div class="password-display">
-            <div id="passwordOutput" aria-label="Generated Password">Click Generate</div>
-            <button class="copy-btn" id="copyBtn" title="Copy to Clipboard">
-                <i class="fas fa-copy"></i>
-            </button>
-            <div class="copy-tooltip" id="copyTooltip">Copied!</div>
-        </div>
-
-        <!-- Controls Section -->
-        <div class="controls">
-            <!-- Length Slider -->
-            <div class="length-slider">
-                <label for="lengthRange">
-                    <span>Password Length</span>
-                    <span id="lengthValue">16</span>
-                </label>
-                <input type="range" id="lengthRange" min="4" max="64" value="16">
+        <main>
+            <!-- Password Display Area -->
+            <div class="password-display">
+                <input type="text" id="passwordOutput" readonly placeholder="Your password will appear here">
+                <button id="copyBtn" class="copy-btn" title="Copy to Clipboard">
+                    <i class="fas fa-copy"></i>
+                </button>
             </div>
 
-            <!-- Options Checkboxes -->
-            <div class="options-grid">
-                <label class="option">
-                    <input type="checkbox" id="includeUppercase" checked>
-                    <span>Uppercase (A-Z)</span>
-                </label>
-                <label class="option">
-                    <input type="checkbox" id="includeLowercase" checked>
-                    <span>Lowercase (a-z)</span>
-                </label>
-                <label class="option">
-                    <input type="checkbox" id="includeNumbers" checked>
-                    <span>Numbers (0-9)</span>
-                </label>
-                <label class="option">
-                    <input type="checkbox" id="includeSymbols" checked>
-                    <span>Symbols (!@#)</span>
-                </label>
+            <!-- Strength Meter -->
+            <div class="strength-container">
+                <div class="strength-label">
+                    <span>Strength:</span>
+                    <span id="strengthText">Weak</span>
+                </div>
+                <div class="strength-bar">
+                    <div id="strengthFill" class="strength-fill"></div>
+                </div>
             </div>
-        </div>
 
-        <!-- Strength Indicator -->
-        <div class="strength-meter">
-            <div class="strength-bar">
-                <div class="strength-fill" id="strengthFill"></div>
+            <!-- Controls -->
+            <div class="controls">
+                <!-- Length Slider -->
+                <div class="control-group">
+                    <label for="lengthRange">
+                        Password Length: <span id="lengthValue">16</span>
+                    </label>
+                    <input type="range" id="lengthRange" min="4" max="64" value="16">
+                </div>
+
+                <!-- Character Options -->
+                <div class="checkbox-group">
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="includeUppercase" checked>
+                        <span class="checkmark"></span>
+                        Uppercase (A-Z)
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="includeLowercase" checked>
+                        <span class="checkmark"></span>
+                        Lowercase (a-z)
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="includeNumbers" checked>
+                        <span class="checkmark"></span>
+                        Numbers (0-9)
+                    </label>
+                    <label class="checkbox-item">
+                        <input type="checkbox" id="includeSymbols" checked>
+                        <span class="checkmark"></span>
+                        Symbols (!@#$)
+                    </label>
+                    
+                    <!-- NEW: Anti-Confusion Toggle -->
+                    <label class="checkbox-item highlight">
+                        <input type="checkbox" id="avoidConfusing" checked>
+                        <span class="checkmark"></span>
+                        <i class="fas fa-ban"></i> Avoid Confusing Chars (l, I, 1, O, 0)
+                    </label>
+                </div>
+
+                <button id="generateBtn" class="generate-btn">
+                    <i class="fas fa-sync-alt"></i> Generate Password
+                </button>
             </div>
-            <div class="strength-text" id="strengthText">Strength: Weak</div>
-        </div>
-
-        <!-- Generate Button -->
-        <button class="generate-btn" id="generateBtn">
-            <i class="fas fa-sync-alt"></i> Generate Password
-        </button>
+        </main>
 
         <footer>
-            <p>Built by <a href="https://github.com/niteshsingh-x" target="_blank">Nitesh Singh</a></p>
+            <p>Created by <a href="https://github.com/niteshsingh-x" target="_blank">Nitesh Singh</a> | 
+            <a href="https://niteshsingh-x.github.io/" target="_blank">Portfolio</a></p>
         </footer>
     </div>
 
-    <!-- Main Script (Encapsulated) -->
     <script src="script.js"></script>
 </body>
 </html>
